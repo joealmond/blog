@@ -24,21 +24,25 @@ try {
     const fileContent = fs.readFileSync(path.join(directory, filename), "utf8");
     const { data, content } = matter(fileContent);
 
+    //TODO: this html boilerplate, has to com from a single source
     const htmlContent = `
     <!DOCTYPE html>
     <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <base href="/dist/"> 
         <title>${data.title}</title>
     </head>
     <body>
-        ${data.header ? fs.readFileSync("header.html", "utf8") : ""}
+        ${data.header ? fs.readFileSync(path.join(sourcePath, "header.html"), "utf8") : ""}
   
         <h1>${data.title}</h1>
         <p>${data.date}</p>
   
         ${marked.parse(content)}
   
-        ${data.footer ? fs.readFileSync("footer.html", "utf8") : ""}
+        ${data.footer ? fs.readFileSync(path.join(sourcePath, "footer.html"), "utf8") : ""}
     </body>
     </html>
   `;
@@ -87,3 +91,37 @@ try {
 } catch (err) {
   console.error("Error reading directory:", err);
 }
+
+try {
+  // Read files
+  const indexContent = fs.readFileSync(
+    path.join(sourcePath, "index.html"),
+    "utf8"
+  );
+  const headerContent = fs.readFileSync(path.join(sourcePath, "header.html"), "utf8");
+  const footerContent = fs.readFileSync(
+    path.join(sourcePath, "footer.html"),
+    "utf8"
+  );
+
+  // Replace content within tags using regular expressions
+  const modifiedIndexContent = indexContent
+    .replace(/<header>[\s\S]*?<\/header>/, `${headerContent}`) // Remove the extra <header> tags
+    .replace(/<footer>[\s\S]*?<\/footer>/, `${footerContent}`); // Remove the extra <footer> tags
+
+  // Write the modified HTML back to index.html
+  fs.writeFileSync(
+    path.join(outputDirectory, "index.html"),
+    modifiedIndexContent
+  );
+  fs.unlinkSync(path.join(outputDirectory, 'header.html'));
+  fs.unlinkSync(path.join(outputDirectory, 'footer.html'));
+  console.log("index.html joined with header and footer!");
+} catch (err) {
+  console.error("Error reading directory:", err);
+}
+
+//TODO: separate code to multiple files
+//TODO: better manage paths (may be config file)
+//TODO: better system for partials
+//TODO: automatically add header and footer (explicit false in front matter not to add)
