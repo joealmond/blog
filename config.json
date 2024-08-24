@@ -1,0 +1,44 @@
+{
+    "site": {
+      "title": "My Awesome Blog",
+      "description": "A blog about web development and technology",
+      "author": "John Doe",
+      "url": "https://www.myawesomeblog.com"
+    },
+    "build": {
+      "outputPath": "/dist",
+      "sourcePath": "/src",
+      "layoutsPath": "/src/layouts",
+      "pagesPath": "/src/contents/pages",
+      "postsPath": "/src/contents/posts",
+      "outputPostsPath": "/posts"
+    },
+    "social": {
+      "twitter": "@myhandle",
+      "github": "mygithubusername",
+      "email": "me@email.com"
+    },
+    "layout": {
+      "index": "createBaseHtml.js",
+      "header": "header.js",
+      "footer": "footer.js"
+    },
+    "menu": [
+      {
+        "name": "Home",
+        "url": "/home.html"
+      },
+      {
+        "name": "About",
+        "url": "/about.html"
+      },
+      {
+        "name": "Posts",
+        "url": "/posts.html"
+      },
+      {
+        "name": "Contact",
+        "url": "/contact.html"
+      }
+    ]
+  }
