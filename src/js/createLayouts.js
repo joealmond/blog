@@ -5,7 +5,12 @@ import createLayout from "./createLayout.js";
 async function createLayouts(config) {
   const layouts = [];
   const { layoutsPath } = config.build;
-  const layoutsDirectory = path.join(import.meta.dirname, "..", "..", layoutsPath);
+  const layoutsDirectory = path.join(
+    import.meta.dirname,
+    "..",
+    "..",
+    layoutsPath
+  );
   try {
     const layoutFiles = getJsFiles(layoutsDirectory);
 
@@ -16,6 +21,7 @@ async function createLayouts(config) {
     });
 
     await Promise.all(layoutPromises);
+    console.log("Layouts created.");
   } catch (err) {
     console.error("Error occurred while reading files.", err);
   }

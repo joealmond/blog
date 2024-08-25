@@ -1,16 +1,27 @@
 import path from "path";
+import fsp from "fs/promises";
 
 import { getJsFiles } from "./utility.js";
 import createPage from "./createPage.js";
 
 async function createPages(config) {
-  const { pagesPath } = config.build;
+  const { pagesPath, outputPath } = config.build;
   const pagesDirectory = path.join(import.meta.dirname, "..", "..", pagesPath);
+  const outputDirectory = path.join(
+    import.meta.dirname,
+    "..",
+    "..",
+    outputPath
+  );
   try {
     const pages = getJsFiles(pagesDirectory);
 
     for (const filename of pages) {
-      await createPage(filename, config);
+      const htmlContentWithLayout = await createPage(filename, config);
+      const pageName = filename.replace(".js", "");
+      const outputFilePath = path.join(outputDirectory, pageName + ".html");
+      await fsp.writeFile(outputFilePath, htmlContentWithLayout);
+      console.log(`Copied page ${outputFilePath}`);
     }
   } catch (err) {
     console.error("Error occurred while generating HTML files:", err);
