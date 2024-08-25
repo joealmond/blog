@@ -20,7 +20,7 @@ async function createPage(filename, config, layouts) {
       layouts
     );
 
-    console.log(`Generated page ${filename}`);
+    console.log(`Generated page from ${filename}`);
     return htmlContentWithLayout;
   } catch (err) {
     console.error(

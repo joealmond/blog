@@ -15,7 +15,7 @@ export default function createPost(directory, filename, config, layouts) {
       layouts,
       metadata
     );
-    console.log(`Generated post ${filename}`);
+    console.log(`Generated post from ${filename}`);
     return baseHtml;
   } catch (error) {
     console.error(

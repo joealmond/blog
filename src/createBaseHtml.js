@@ -1,5 +1,4 @@
 import { marked } from "marked";
-import createLayouts from "./js/createLayouts.js";
 
 export default async function createBaseHtml(
   config,
@@ -20,6 +19,7 @@ export default async function createBaseHtml(
         <base href="${config.build.outputPath}">
         <title>${config.site.title}</title>
         <description>${config.site.description}</description>
+        <link rel="stylesheet" href="styles/globalstyle.css">
     </head>
     <body>
         ${header ?? ""}

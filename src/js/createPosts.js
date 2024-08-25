@@ -25,7 +25,7 @@ export default async function createPosts(config, layouts) {
         const newFilename = filename.replace(".md", ".html");
 
         fs.writeFileSync(path.join(outputPath, newFilename), baseHtml);
-        console.log(`Copied post ${outputPath}${filename}`);
+        console.log(`Copied post ${outputPath}${newFilename}`);
       })
     );
 

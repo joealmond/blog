@@ -6,6 +6,7 @@
     "url": "https://www.myawesomeblog.com"
   },
   "build": {
+    "rootPath": "/",
     "outputPath": "/dist",
     "sourcePath": "/src",
     "layoutsPath": "/src/layouts",
@@ -39,6 +40,12 @@
     {
       "name": "Contact",
       "url": "/contact.html"
+    }
+  ],
+  "toCopy": [
+    {
+      "srcDir": "/src/styles",
+      "destDir": "/dist/styles"
     }
   ]
 }

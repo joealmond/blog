@@ -16,7 +16,7 @@ async function createLayouts(config) {
     });
 
     await Promise.all(layoutPromises);
-    console.log("Layouts created.");
+    console.log("Layouts created");
   } catch (err) {
     console.error("Error occurred while reading files.", err);
   }

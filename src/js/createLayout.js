@@ -8,7 +8,7 @@ async function createLayout(filename, config) {
   try {
     const { default: generateHTML } = await import(filePath);
     const htmlContent = await generateHTML(config);
-    console.log(`Generated layout ${filename}`);
+    console.log(`Generated layout from ${filename}`);
     return htmlContent;
   } catch (err) {
     console.error(

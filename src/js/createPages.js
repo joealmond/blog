@@ -17,7 +17,7 @@ async function createPages(config, layouts) {
       const pageName = filename.replace(".js", "");
       const outputFilePath = path.join(outputDirectory, pageName + ".html");
       await fsp.writeFile(outputFilePath, htmlContentWithLayout);
-      console.log(`Copied page ${outputFilePath}`);
+      console.log(`Copied page as ${outputFilePath}`);
     }
   } catch (err) {
     console.error("Error occurred while generating HTML files:", err);
