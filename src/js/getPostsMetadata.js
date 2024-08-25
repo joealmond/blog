@@ -5,13 +5,9 @@ import matter from "gray-matter";
 import { getDirectories } from "./utility.js";
 
 export default function getPostsMetadata(config) {
+  const { postsPath, rootPath } = config.build;
   const posts = [];
-  const postsDirectory = path.join(
-    import.meta.dirname,
-    "..",
-    "..",
-    config.build.postsPath
-  );
+  const postsDirectory = path.join(rootPath, postsPath);
 
   try {
     getDirectories(postsDirectory).forEach((directory) => {
@@ -23,7 +19,6 @@ export default function getPostsMetadata(config) {
         const fileContent = fs.readFileSync(filePath, "utf8");
         const { data } = matter(fileContent);
         data.id = fileName.replace(".md", "");
-
         posts.push(data);
       });
     });

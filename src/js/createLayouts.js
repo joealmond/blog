@@ -4,16 +4,11 @@ import createLayout from "./createLayout.js";
 
 async function createLayouts(config) {
   const layouts = [];
-  const { layoutsPath } = config.build;
-  const layoutsDirectory = path.join(
-    import.meta.dirname,
-    "..",
-    "..",
-    layoutsPath
-  );
+  const { layoutsPath, rootPath } = config.build;
+  const layoutsDirectory = path.join(rootPath, layoutsPath);
+
   try {
     const layoutFiles = getJsFiles(layoutsDirectory);
-
     const layoutPromises = layoutFiles.map(async (filename) => {
       const layout = await createLayout(filename, config);
       const obj = { filename, layout };

@@ -8,8 +8,6 @@ export default async function createBaseHtml(
   layouts,
   metadata = null
 ) {
-  
-  // const layouts = await createLayouts(config);
 
   const { header, isMdFile, footer } = getLayouts(layouts, filename);
 

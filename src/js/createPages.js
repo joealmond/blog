@@ -5,14 +5,10 @@ import { getJsFiles } from "./utility.js";
 import createPage from "./createPage.js";
 
 async function createPages(config, layouts) {
-  const { pagesPath, outputPath } = config.build;
-  const pagesDirectory = path.join(import.meta.dirname, "..", "..", pagesPath);
-  const outputDirectory = path.join(
-    import.meta.dirname,
-    "..",
-    "..",
-    outputPath
-  );
+  const { pagesPath, outputPath, rootPath } = config.build;
+  const pagesDirectory = path.join(rootPath, pagesPath);
+  const outputDirectory = path.join(rootPath, outputPath);
+
   try {
     const pages = getJsFiles(pagesDirectory);
 

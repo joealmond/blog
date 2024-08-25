@@ -8,8 +8,13 @@ export default function createPost(directory, filename, config, layouts) {
   try {
     const fileContent = fs.readFileSync(path.join(directory, filename), "utf8");
     const { data: metadata, content } = matter(fileContent);
-  
-    const baseHtml = createBaseHtml(config, content, filename, layouts, metadata);
+    const baseHtml = createBaseHtml(
+      config,
+      content,
+      filename,
+      layouts,
+      metadata
+    );
     console.log(`Generated post ${filename}`);
     return baseHtml;
   } catch (error) {

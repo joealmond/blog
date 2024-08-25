@@ -1,15 +1,8 @@
 import path from "path";
 
 async function createLayout(filename, config) {
-  const { layoutsPath } = config.build;
-
-  const layoutsDirectory = path.join(
-    import.meta.dirname,
-    "..",
-    "..",
-    layoutsPath
-  );
-
+  const { layoutsPath, rootPath } = config.build;
+  const layoutsDirectory = path.join(rootPath, layoutsPath);
   const filePath = path.join(layoutsDirectory, filename);
 
   try {
