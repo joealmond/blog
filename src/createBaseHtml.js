@@ -5,10 +5,11 @@ export default async function createBaseHtml(
   config,
   content,
   filename,
+  layouts,
   metadata = null
 ) {
   
-  const layouts = await createLayouts(config);
+  // const layouts = await createLayouts(config);
 
   const { header, isMdFile, footer } = getLayouts(layouts, filename);
 

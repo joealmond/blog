@@ -2,7 +2,7 @@ import path from "path";
 
 import addLayout from "./addLayout.js";
 
-async function createPage(filename, config) {
+async function createPage(filename, config, layouts) {
   const { pagesPath } = config.build;
 
   const pagesDirectory = path.join(import.meta.dirname, "..", "..", pagesPath);
@@ -16,7 +16,8 @@ async function createPage(filename, config) {
     const htmlContentWithLayout = await addLayout(
       config,
       htmlContent,
-      filename
+      filename,
+      layouts
     );
 
     console.log(`Generated page ${filename}`);

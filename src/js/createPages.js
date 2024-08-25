@@ -4,7 +4,7 @@ import fsp from "fs/promises";
 import { getJsFiles } from "./utility.js";
 import createPage from "./createPage.js";
 
-async function createPages(config) {
+async function createPages(config, layouts) {
   const { pagesPath, outputPath } = config.build;
   const pagesDirectory = path.join(import.meta.dirname, "..", "..", pagesPath);
   const outputDirectory = path.join(
@@ -17,7 +17,7 @@ async function createPages(config) {
     const pages = getJsFiles(pagesDirectory);
 
     for (const filename of pages) {
-      const htmlContentWithLayout = await createPage(filename, config);
+      const htmlContentWithLayout = await createPage(filename, config, layouts);
       const pageName = filename.replace(".js", "");
       const outputFilePath = path.join(outputDirectory, pageName + ".html");
       await fsp.writeFile(outputFilePath, htmlContentWithLayout);

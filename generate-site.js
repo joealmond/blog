@@ -1,11 +1,13 @@
 import configLoader from "./src/js/configLoader.js";
 import createPages from "./src/js/createPages.js";
 import createPosts from "./src/js/createPosts.js";
+import createLayouts from "./src/js/createLayouts.js";
 
 const config = configLoader();
+const layouts = await createLayouts(config);
 
-createPosts(config);
-createPages(config);
+await createPosts(config, layouts);
+await createPages(config, layouts);
 
 // //TODO: better manage paths
 // //TODO: automatically add header and footer (explicit false in front matter not to add)
