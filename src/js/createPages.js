@@ -12,15 +12,18 @@ async function createPages(config, layouts) {
   try {
     const pages = getJsFiles(pagesDirectory);
 
-    for (const filename of pages) {
+    await Promise.all(pages.map(async (filename) => {
       const htmlContentWithLayout = await createPage(filename, config, layouts);
       const pageName = filename.replace(".js", "");
       const outputFilePath = path.join(outputDirectory, pageName + ".html");
       await fsp.writeFile(outputFilePath, htmlContentWithLayout);
       console.log(`Copied page as ${outputFilePath}`);
-    }
+    }));
+    console.log("All pages converted to HTML and copied successfully!");
+    return true;
   } catch (err) {
     console.error("Error occurred while generating HTML files:", err);
+    return false;
   }
 }
 

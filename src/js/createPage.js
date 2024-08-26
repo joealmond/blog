@@ -27,6 +27,7 @@ async function createPage(filename, config, layouts) {
       `Error occurred while importing or processing the file ${filename}:`,
       err
     );
+    return null;
   }
 }
 

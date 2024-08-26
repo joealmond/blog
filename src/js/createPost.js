@@ -22,5 +22,6 @@ export default function createPost(directory, filename, config, layouts) {
       `Error occurred while importing or processing the file ${filename}:`,
       error
     );
+    return null;
   }
 }
