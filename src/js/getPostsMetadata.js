@@ -27,5 +27,6 @@ export default function getPostsMetadata(config) {
     return posts;
   } catch (err) {
     console.error("Error reading posts metadata.", err);
+    return null;
   }
 }
