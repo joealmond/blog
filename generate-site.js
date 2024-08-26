@@ -9,6 +9,7 @@ import copyAllFiles from "./src/js/copyAllFiles.js";
 //TODO: system for tagging and categories, and search, linking between posts, pagination
 //TODO: interaction with posts, comments, likes, etc.
 //TODO: can mark drafts
+//TODO: better global styles handling (duplicate config entries, no multiple files)
 
 generateSite();
 

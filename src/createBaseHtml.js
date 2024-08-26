@@ -8,6 +8,8 @@ export default async function createBaseHtml(
   metadata = null
 ) {
 
+  const { outputPath, globalStylesPath } = config.build;
+  const { title,description } = config.site;
   const { header, isMdFile, footer } = getLayouts(layouts, filename);
 
   return /*html*/ `
@@ -16,10 +18,10 @@ export default async function createBaseHtml(
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <base href="${config.build.outputPath}">
-        <title>${config.site.title}</title>
-        <description>${config.site.description}</description>
-        <link rel="stylesheet" href="styles/globalstyle.css">
+        <base href="${outputPath}">
+        <title>${title}</title>
+        <description>${description}</description>
+        <link rel="stylesheet" href="${outputPath}${globalStylesPath}">
     </head>
     <body>
         ${header ?? ""}

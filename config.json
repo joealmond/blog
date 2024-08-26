@@ -12,7 +12,8 @@
     "layoutsPath": "/src/layouts",
     "pagesPath": "/src/contents/pages",
     "postsPath": "/src/contents/posts",
-    "outputPostsPath": "/posts"
+    "outputPostsPath": "/posts",
+    "globalStylesPath": "/styles/globalStyles.css"
   },
   "social": {
     "twitter": "@myhandle",
