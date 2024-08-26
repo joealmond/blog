@@ -19,6 +19,7 @@ async function createLayouts(config) {
     console.log("Layouts created");
   } catch (err) {
     console.error("Error occurred while reading files.", err);
+    return null;
   }
   return layouts;
 }
