@@ -1,27 +1,25 @@
 import path from "path";
 
-import addLayout from "./addLayout.js";
+import createBaseHtml from "./../createBaseHtml.js";
 
 async function createPage(filename, config, layouts) {
-  const { pagesPath } = config.build;
-
-  const pagesDirectory = path.join(import.meta.dirname, "..", "..", pagesPath);
-
+  const { pagesPath, rootPath } = config.build;
+  const pagesDirectory = path.join(rootPath, pagesPath);
   const filePath = path.join(pagesDirectory, filename);
 
   try {
     const { default: generateHTML } = await import(filePath);
-    const htmlContent = await generateHTML(config);
+    const content = await generateHTML(config);
 
-    const htmlContentWithLayout = await addLayout(
+    const baseHtml = createBaseHtml(
       config,
-      htmlContent,
+      content,
       filename,
       layouts
     );
 
     console.log(`Generated page from ${filename}`);
-    return htmlContentWithLayout;
+    return baseHtml;
   } catch (err) {
     console.error(
       `Error occurred while importing or processing the file ${filename}:`,
