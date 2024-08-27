@@ -9,10 +9,7 @@ export default async function createPost(directory, filename, config, layouts) {
   try {
     const fileContent = fs.readFileSync(path.join(directory, filename), "utf8");
     const { data: metadata, content } = matter(fileContent);
-    const postHtml = await createPostHtml(
-      content,
-      metadata
-    );
+    const postHtml = await createPostHtml(content, metadata);
     const postWithBaseHtml = createBaseHtml(
       config,
       postHtml,
