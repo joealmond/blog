@@ -30,7 +30,7 @@ export default async function createBaseHtml(
   `;
 }
 
-function getLayouts(layouts, filename) {
+function getLayouts(layouts) {
   let header,
     footer = null;
 
