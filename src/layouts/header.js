@@ -1,6 +1,6 @@
 export default function createHeaderHtml(config) {
   const { outputPath } = config.build;
-  return /*html*/ `
+  return html`
     <header>
         <nav>
             <ul>

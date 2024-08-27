@@ -2,7 +2,7 @@ import { marked } from "marked";
 
 export default async function createPostHtml(content, metadata = null) {
 
-  return /*html*/ `
+  return html`
 <article>
   <header> 
     ${metadata ? `<h1>${metadata.title}</h1>` : ""}

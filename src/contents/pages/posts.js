@@ -5,7 +5,7 @@ export default function posts(config) {
 
   const { outputPath, outputPostsPath } = config.build;
 
-  return /*html*/ `
+  return html`
     <h3>Posts</h3>
     <ul>
         ${posts

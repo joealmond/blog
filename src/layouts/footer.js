@@ -1,5 +1,5 @@
 export default function createFooterHtml(config) {
-  return /*html*/ `
+  return html`
     <footer>
         <p>© ${new Date().getFullYear()} ${config.site.title}</p>
     </footer>
