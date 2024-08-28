@@ -8,7 +8,8 @@ export default async function createBaseHtml(
   const { title, description } = config.site;
   const { header, footer } = getLayouts(layouts, filename);
 
-  return html`<!DOCTYPE html>
+  return `
+<!DOCTYPE html>
 <html>
   <head>
       <meta charset="UTF-8">
